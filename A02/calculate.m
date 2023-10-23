@@ -1,0 +1,50 @@
+function calculate(path)
+    IN = csvread(path);
+    ai = IN(:,1);
+    si = IN(:,2);
+    
+    T = sum(ai);
+    B = sum(si);
+    
+    U = B / T;
+    
+    
+    fprintf("Utilization %f\n", U);
+    
+    A = [cumsum(ai)];
+    
+    [N,~] = size(A);
+    
+    C = zeros(N,1);
+    C(1) = A(1) + si(1);
+    
+    for i = 2 : N
+        value = si(i) + max(A(i), C(i-1));
+        C(i) = value;
+    end
+    
+    ri = C - A;
+    
+    averageR = sum(ri) / N;
+    
+    fprintf("Average response time %f\n", averageR);
+    
+    A_ = [A, ones(N, 1)];
+    C_ = [C, -ones(N, 1)];
+    M = [A_;C_];
+    M = sortrows(M);
+    
+    M(:,3) = cumsum(M(:,2));
+    
+    NIdle = sum(M(:,3) == 0);
+    
+    idleFreq = NIdle / T;
+    
+    fprintf("Idle frequency per unit %f\n", idleFreq);
+    
+    averageIdleTime = (T - B) / NIdle;
+    
+    fprintf("Average idle time %f\n", averageIdleTime);
+
+end
+

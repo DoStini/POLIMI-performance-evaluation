@@ -142,6 +142,57 @@ hold off;
 
 % Second part of exercise
 
+% exponential
+
+exp_cheap = exponential(exponential < 10) * 0.01;
+exp_exp = exponential(exponential > 10) * 0.02;
+
+exp_total = sum(exp_cheap) + sum(exp_exp);
+
+fprintf("Total exponential: %f\n", exp_total);
+
+
+
+% pareto
+
+pareto_cheap = pareto(pareto < 10) * 0.01;
+pareto_exp = pareto(pareto > 10) * 0.02;
+
+pareto_total = sum(pareto_cheap) + sum(pareto_exp);
+
+fprintf("Total pareto: %f\n", pareto_total);
+
+
+% erlang
+
+erlang_cheap = erlang(erlang < 10) * 0.01;
+erlang_exp = erlang(erlang > 10) * 0.02;
+
+erlang_total = sum(erlang_cheap) + sum(erlang_exp);
+
+fprintf("Total erlang: %f\n", erlang_total);
+
+
+% hypo
+
+hypo_cheap = hypo_exponential(hypo_exponential< 10) * 0.01;
+hypo_exp = hypo_exponential(hypo_exponential > 10) * 0.02;
+
+hypo_total = sum(hypo_cheap) + sum(hypo_exp);
+
+fprintf("Total hypo: %f\n", hypo_total);
+
+
+
+% hyper
+
+hyper_cheap = hyper_exponential(hyper_exponential< 10) * 0.01;
+hyper_exp = hyper_exponential(hyper_exponential > 10) * 0.02;
+
+hyper_total = sum(hyper_cheap) + sum(hyper_exp);
+
+fprintf("Total hyper: %f\n", hyper_total);
+
 
 
 
